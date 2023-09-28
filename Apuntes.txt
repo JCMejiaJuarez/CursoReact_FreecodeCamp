@@ -1,0 +1,201 @@
+React es una biblioteca de JavaScript de código abierto diseñada para crear interfaces de usuario. (Una biblioteca es un conjunto de implementaciones o subprogarmas que podemos usar en nuestro codigo).
+ 
+Ventajas de React:
+-Fácil de aprender y usar.
+-Componentes reutilizables.
+-Crear aplicaciones dinamicas.
+-Buen desempeño.
+
+Conceptos basicos: 
+Componente: Parte de la interfaz de usuario que es independiente y reusable. Estos se dividen en dos clases, Funcionales y de clase.Un componente funcional es una funcion de JavaScript que retorna uyn elemento de React (JSX). Es como cualquier funcion de JavaScript.
+
+Ejemplo: 
+function Saludo(props) {
+	return <h1>¡Hola, {props.nombre}!</h1>; //Props = "propiedades"
+}
+
+Caracteristicas de componente funcional:
+-Debe retornar un elemento JSX.
+-Debe comenzar con una letra mayúscula.
+-Puede recibir valores si es necesario.
+
+Los props son argumentos que puede recibir un componente de React. Los props solo pueden ser enviados de "padre a hijo".
+
+Componentes de clase:
+Clase de ES6(JavaScript moderno) que retorna un elemento JSX.
+Ejemplo:
+class Saludo extends React.Component {
+	render(){ //render significa renderizar o mostrar.
+		return <h1>¡Hola, {this.props.nombre}!</h1>;
+	}
+}
+
+Caracteristicas de un componente de clase:
+-Debe extender React.Component para que podamos diferenciarlo de una clase de JavaScript y sea una de React.
+-Debe tener un método render() para retornar un elemento de JSX.
+-Puede recibir valores si es necesario("props"). 
+
+Estado: 
+Es la representacion en JavaScript del conjunto de propiedades de un componente y sus valores actuales (En este concepto, "propiedades" NO serefiere a los props, sino a la información que se representa sobre el componente).
+Anteriormente, usábamos componentes de clase para poder trabajar con "estados" de nuestros componentes. En versionesanteriores de React (anteriores a 16.8), NO podíamos hacerlo en componentes funcionales luego llegaron los Hooks. Ahora sí podemos asignart y actualizarel estado de un componente funcional en React con los Hooks(anzuelos en español).
+
+Hooks:
+Funcion especial que te permite trabajar con estados en componentes funcionales y otros aspectos de React. Sin escribir un componente de clase. Esto nos permite escribir código mucho más conciso y facil de entender.
+
+Event Listener:
+Es una funcion en JavaScript que es ejecutada cuando ocurre un evento específico(También podemos referirnos a esta funcion como "Event Handler"). 
+
+Introducción a JSX.
+JSX(JavaScript XML) Es una extension para la sintaxis de JavaScript. Nos permite describir en JavaScript cómo se verán los componentes usando una estructura similar a HTML.
+
+Ventajas de JSX:
+-Estructura más facil de visualizar.
+-Errores y advertencias más útiles.
+
+JSX es opcional pero es una buena herramienta para los progamadores.
+Ejemplo:
+cost elemento = <h1>¡Hola, Mundo!</h1>;
+
+Permite combinar JavaScript con HTML.
+Ejemplo Avanzado:
+
+import React from 'react';
+import '..hojas-de-estilo/Contador.css';
+
+function Contador({ numClics }){
+	return (
+		<div className="contador">
+			{numClics}
+		</div>
+	);
+}
+
+export default Contador;
+
+Ejemplo2:
+
+import React from 'react';
+import '..hojas-de-estilo/BotonClear.css';
+
+const BotonClear(props) => (
+		<div className="boton-clear" onClick={props.manejarClear}>
+			{props.chlidren}
+		</div>
+	);
+
+export default BotonClear;
+
+Elementos en JSX:
+Los elementos son las unidades mas pequeñas en React. Definen lo que se ve en la pantalla.
+Los componentes en React están "hechos" de elementos.
+(root = raíz)
+<div id="root"></> elemento de HTML Manejado por React DOM.
+
+React DOM:
+Es un paquete que facilita la interacción y actualización del DOM en aplicaciones React. 
+
+DOM:
+
+DOM significa Document Object Model. Es una representación en el navegador de todos los elementos que conforman una página o aplicación web.
+
+Con JSX, puedes crear y usar cualquier elemento HTML. 
+
+Ejemplos: <div>  <img>  <a>  <header>  <nav>  <p>  <h1>  <button>  <h2>
+
+En JSX, los elementos HTML se representan con etiquetas en letras minúsculas. En cambio los componentes definidos por el usuario comienzan con una letra mayúscula.
+
+Atributos :
+Se pueden agregar atributos a tus elementos en JSX para especificar ciertas caracteristicas. Pero algunos se escriben de forma distinta si los comparamos con HTML.
+
+Ejemplo:
+
+<h1 class="titulo-azul"></h1> <= HTML.
+<label for="css">CSS</label> <= HTML.
+
+<h1 className="titulo-azul"></h1> <= JSX.
+<label htmlFor="css">CSS</label> <= JSX.
+
+class es una palabra reservada en JavaScript que podemos usar para crear una clase. Por eso necesitamos escribir este atributo de forma distinta en JSX.
+
+El atributo style acepta un objeto JavaScript con propiedades CSS escritas en camelCase(escribir la primera letra en minuscula y por cada nueva palabra escribir la inicial en mayúscula).
+
+CSS:
+background-image
+bacground-color 
+font-family
+
+JSX:
+backgroundImage 
+bacgroundColor 
+fontFamily.
+
+Ejemplo:
+
+const estiloDiv = {
+	color: 'yellow',
+	backgroundColor: 'black'
+};
+
+<div style="{estiloDiv}">¡Hola, Mundo!</div> 
+
+Ejemplo de un estilo especifico con pocas propiedades:
+
+<div style={{color: 'yellow'}}>¡Hola, Mundo!</div>
+
+El primer par de llaves nos indica que se esta insertando lenguaje de JavaScript y el segundo par de llaves introduce un objeto de JavaScript sin necesitar una constante o un let.
+
+Atributos del DOM reconocidos por React:
+
+accept, acceptCharset, accessKey, action, allowFullScreen, alt, async, autoComplete, autoFocus, autoPlay, capture, cellPadding, cellSacing, challenge, charSet, checked, cite, classID, className, colSpan, cols, content, contentEditable, contextMenu, controls, controlsList, coords, crossOrigin, data, dateTime, default, defer, dir, disabled, download, draggable, encType, form, formAction, formEncType, formMethod, formNoValidate, formTarget, frameBorder, headers, height, hidden, high, href, hrefLang, htmlFor, httpEquiv, icon, id, inputMode, integrity, is, keyParams, keyType, kind, label, lang, list, loop, low, manifest, marginHeight, marginWidth, max, maxLength, media, mediaGroup, method, min, minLength, multiple, muted, name, noValidate, nonce, open, optimum, pattern, placeholder, poster, preload, profile, redioGroup, readOnly, rel, required, reversed, role, rowSpan, rows, sandbox, scope, scoped, scrolling, seamless, selected, shape, size, sizes, span, spellCheck, src, srcDoc, srcLang, srcSet, start, step, style, summary, tabIndex, target, title, type, useMap, value, width, wmode, wrap.
+
+Estructura: 
+Al igual que en HTML, los elementos pueden ser anidados en JSX para formar estructuras más complejas(gracias a la identación).
+
+Renderizar Componentes:
+<div id="root"></div> Contenedor principal de todos los componentes que se van a crear.
+
+Ejemplo:
+
+const elemento = <h1>¡Hola, Mundo!</h1>; <= Elemento
+
+ReactDOM.render( <= se importa atraves de "import ReactDOM from 'react-dom';" react-dom es el paquete, ReactDOM(esta es la variable con la que nos referimos al paquete)
+	elemento, <= Elemento a Renderizar.
+	document.getElementById('root') <= Contenedor para el elemento. Se agregara al div de root
+);
+
+Con este metodo se puede agregar un elemento dentro de otro elemento. 
+
+Self-Closing Tag:
+Es un elemento que solo posee una etiqueta de apertura ya que no contiene texto u otro elemento.
+
+Ejemplo:
+
+<img src="logo.png" alt="Mi imagen" />
+
+JavaScript en JSX:
+Cuando se usan las llaves "{}" se hace referencia a codigo de JavaScript.
+
+Ejemplo: 
+
+let adjetivo = "Interesante"; <=JS
+
+<p>React es {adjetivo}</p> <= JSX
+
+Puedes escribir cualquier expresión válida en JavaScript entre las llaves y su valor será reemplazado. 
+
+Ejemplo:
+
+<p>El resultado es: {5 * 6}</p> <= Se evaluará como codigo de JavaScript dando el resultado 30.
+
+let nombre = "Gino";
+
+<p>Su nombre es: {nombre.toUpperCase()}</p> <= Se esta llamando a un metodo. /*Revisar operadores ternarios*/
+
+Crear una app en JSX:
+Se abre una terminal en Visual Studio Code se ejecuta el comando:
+
+npx create-react-app nombre-carpeta //para crear la app en la carpeta en la que nos encontramos se sustituye el nombre de la carpeta por un punto(.)
+
+al finalizar la instalacion de todos los paquetes y las diferentes herramientas se iniciara un repositorio de git pudiendo hacer git push git commit, etc, y para iniciar la aplicación se usaran los comandos cd para ir a la carpeta que acabamos de crear y ya en la carpeta usaremos el comando de: 
+
+npm start
